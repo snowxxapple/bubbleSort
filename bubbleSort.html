@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>冒泡排序</title>
+</head>
+<style type="text/css">
+#s1 {
+    background: #cae;
+}
+
+#s2 {
+    background: #cfe;
+}
+
+#s3 {
+    background: #eec;
+}
+
+#s4 {
+    background: pink;
+}
+</style>
+
+<body>
+    <p>要排序的数组为：[3,4,1,2,7,5,6]</p>
+    <p id='s1'></p>
+    <p id='s2'></p>
+    <p id='s3'></p>
+    <p id='s4'></p>
+</body>
+<script type="text/javascript">
+function sort1(arr) {
+    var s = document.getElementById('s1');
+    var flag = false;
+    for (var i = 0; i < arr.length; i++) {
+        flag = false; //添加flag来优化算法，在小循环内没有交换数据发生时，则意味已经排好序，尽管外层循环没执行完
+        for (var j = arr.length - 1; j > i; j--) {
+            var a = arr[j];
+            var b = arr[j - 1];
+            if (a > b) {
+                arr[j - 1] = a;
+                arr[j] = b;
+                flag = true;
+            }
+        }
+        if (!flag) {
+            break;
+        }
+    }
+    s1.innerHTML = arr;
+}
+
+function sort2(arr) {
+    var s = document.getElementById('s2');
+    var flag = false;
+    for (var i = 0; i < arr.length; i++) {
+        flag = false;
+        for (var j = 0; j < arr.length - 1 - i; j++) {
+            var a = arr[j];
+            var b = arr[j + 1];
+            if (a < b) {
+                arr[j + 1] = a;
+                arr[j] = b;
+                flag = true;
+            }
+        }
+        if (!flag) {
+            break;
+        }
+    }
+    s2.innerHTML = arr;
+}
+
+function sort3(arr) {
+    var s = document.getElementById('s3');
+    var flag = false;
+    for (var i = 0; i < arr.length; i++) {
+        flag = false;
+        for (var j = arr.length - 1; j > i; j--) {
+            var a = arr[j];
+            var b = arr[j - 1];
+            if (a < b) {
+                arr[j - 1] = a;
+                arr[j] = b;
+                flag = true;
+            }
+
+        }
+        if (!flag) {
+            break;
+        }
+    }
+    s3.innerHTML = arr;
+
+}
+
+function sort4(arr) {
+    var s = document.getElementById('s4');
+    var flag = false;
+    for (var i = 0; i < arr.length; i++) {
+        flag = false;
+        for (var j = 0; j < arr.length - 1 - i; j++) {
+            var a = arr[j];
+            var b = arr[j + 1];
+            if (a > b) {
+                arr[j + 1] = a;
+                arr[j] = b;
+                flag = true;
+            }
+        }
+        if (!flag) {
+            break;
+        }
+    }
+    s4.innerHTML = arr;
+}
+window.onload = function() {
+    var arr = [3, 4, 1, 2, 7, 5, 6];
+    sort1(arr); //由大到小顺序 从数组末尾开始 大的交换位置 放到前面 每次得到一个最大值
+    sort2(arr); //由大到小顺序 从数组起始开始 小的交换位置 放到后面 每次得到一个最小值
+    sort3(arr); //由小到大顺序 从数组末尾开始 小的交换位置 放到前面 每次得到一个最小值
+    sort4(arr); //有小到大顺序 从数组起始开始 大的交换位置 放到后面 每次得到一个最大值
+}
+</script>
+
+</html>
